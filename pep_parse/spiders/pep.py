@@ -12,7 +12,6 @@ class PepSpider(scrapy.Spider):
         all_link = response.css('section#numerical-index tbody tr td')
         for link in all_link:
             pep_link = link.css('a::attr(href)').get()
-            print(pep_link)
             if pep_link is not None:
                 yield response.follow(pep_link, callback=self.parse_pep)
 
